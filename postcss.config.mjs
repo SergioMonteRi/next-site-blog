@@ -2,7 +2,9 @@
 
 const config = {
   plugins: {
-    tailwindcss: {},
+    tailwindcss: {
+      config: './tailwind.config.ts',
+    },
   },
 }
 

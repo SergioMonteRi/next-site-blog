@@ -1,3 +1,5 @@
 export * from './active-link'
+export * from './footer'
 export * from './header'
+export * from './logo'
 export * from './page-layout'
