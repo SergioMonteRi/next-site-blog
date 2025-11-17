@@ -11,7 +11,6 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: '2rem',
       screens: {
         '2xl': '1200px',
       },
@@ -70,6 +69,9 @@ export default {
         // Action - Inter
         'action-md': ['16px', { lineHeight: 'normal', fontWeight: '500' }],
         'action-sm': ['14px', { lineHeight: 'normal', fontWeight: '500' }],
+      },
+      gridTemplateRows: {
+        'app-layout': 'minmax(2rem, 4rem) 1fr minmax(8rem, 10rem)',
       },
     },
   },

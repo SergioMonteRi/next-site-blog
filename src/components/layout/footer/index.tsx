@@ -4,7 +4,7 @@ import { Logo } from '../logo'
 
 export const Footer = () => {
   return (
-    <footer className="bg-gray-500">
+    <footer className="row-start-3 bg-gray-500">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between gap-8 py-8 md:flex-row">
           <Logo />

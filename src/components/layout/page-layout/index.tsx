@@ -17,13 +17,13 @@ export const PageLayout = ({ children }: PageLayoutProps) => {
   return (
     <div
       className={cn(
-        'relative flex min-h-screen flex-col bg-zinc-900',
+        'grid-rows-app-layout grid min-h-screen grid-flow-row bg-zinc-900',
         inter.className,
       )}
     >
       <Header />
 
-      <main className="mb-12 flex flex-1 flex-col">{children}</main>
+      <main className="row-start-2 mb-12 flex flex-1 flex-col">{children}</main>
 
       <Footer />
     </div>
