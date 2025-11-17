@@ -1,9 +1,7 @@
-import { Header } from '@/components'
-
 export default function Home() {
   return (
-    <div className="min-h-screen bg-zinc-900">
-      <Header />
+    <div className="flex flex-1 flex-col items-center justify-center text-zinc-200">
+      Home
     </div>
   )
 }

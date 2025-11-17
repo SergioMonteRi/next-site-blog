@@ -10,8 +10,6 @@ type ActiveLinkProps = {
 export const ActiveLink = ({ href, children, ...rest }: ActiveLinkProps) => {
   const router = useRouter()
 
-  console.log(router.asPath, rest.as)
-
   const isCurrentPath =
     router.asPath === href ||
     router.asPath === rest.as ||
