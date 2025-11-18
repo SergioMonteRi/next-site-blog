@@ -21,7 +21,7 @@ export const Support = () => {
           Sua loja de afiliados, simples, do jeito que deveria ser
         </h2>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid w-full gap-6 md:grid-cols-3">
           <div className="flex flex-col gap-2 rounded-lg bg-blue-400 p-6 text-left md:p-12">
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-300">
               <PaintbrushVertical className="h-6 w-6 text-white" />
