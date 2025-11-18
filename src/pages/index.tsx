@@ -1,4 +1,4 @@
-import { Feature, Hero } from '@/components'
+import { Feature, Hero, Support } from '@/components'
 
 export default function Home() {
   return (
@@ -6,6 +6,7 @@ export default function Home() {
       <article className="flex flex-col bg-gray-700">
         <Hero />
         <Feature />
+        <Support />
       </article>
     </>
   )
