@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google'
+import { Inter, PT_Sans_Caption } from 'next/font/google'
 
 import { cn } from '@/lib/utils'
 
@@ -9,15 +9,24 @@ type PageLayoutProps = {
   children: React.ReactNode
 }
 
+const ptSansCaption = PT_Sans_Caption({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-pt-sans-caption',
+})
+
 const inter = Inter({
   subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-inter',
 })
 
 export const PageLayout = ({ children }: PageLayoutProps) => {
   return (
     <div
       className={cn(
-        'grid-rows-app-layout grid min-h-screen grid-flow-row bg-zinc-900',
+        'grid min-h-screen grid-flow-row grid-rows-app-layout bg-zinc-900 font-inter font-normal',
+        ptSansCaption.className,
         inter.className,
       )}
     >
