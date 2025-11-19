@@ -10,7 +10,7 @@ const ptSansCaption = PT_Sans_Caption({
 
 export const Support = () => {
   return (
-    <section className="w-full bg-gradient-to-r from-gray-500 to-gray-700 p-8 md:py-10">
+    <section className="w-full bg-gradient-to-r from-gray-500 to-gray-700 p-8 py-12 md:py-24">
       <div className="container flex flex-col items-center gap-12">
         <h2
           className={cn(

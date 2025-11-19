@@ -1,4 +1,10 @@
-import { CustomerStory, Feature, Hero, Support } from '@/components'
+import {
+  CallToAction,
+  CustomerStory,
+  Feature,
+  Hero,
+  Support,
+} from '@/components'
 
 export default function Home() {
   return (
@@ -8,6 +14,7 @@ export default function Home() {
         <Feature />
         <Support />
         <CustomerStory />
+        <CallToAction />
       </article>
     </>
   )
