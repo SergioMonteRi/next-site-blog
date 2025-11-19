@@ -1,14 +1,14 @@
 import { ArrowRight, Store } from 'lucide-react'
 import Link from 'next/link'
 
-import { Button } from '@/components/ui'
+import { Button } from '@/components'
 
 export const CallToAction = () => {
   return (
     <section className="relative bg-gradient-to-b from-cyan-950/20 to-gray-700 py-14 md:py-24">
       <div className="absolute inset-0 hidden bg-[url('/background-footer.svg')] bg-cover bg-center bg-no-repeat opacity-90 md:block" />
 
-      <div className="absolute -top-8 left-1/2 -translate-x-1/2 rounded-full bg-cyan-300 p-4">
+      <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-300 p-4">
         <Store className="h-8 w-8 text-cyan-100" />
       </div>
 

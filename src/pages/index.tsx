@@ -1,21 +1,5 @@
-import {
-  CallToAction,
-  CustomerStory,
-  Feature,
-  Hero,
-  Support,
-} from '@/components'
+import { LandingPage } from '@/templates'
 
 export default function Home() {
-  return (
-    <>
-      <article className="flex flex-col bg-gray-700">
-        <Hero />
-        <Feature />
-        <Support />
-        <CustomerStory />
-        <CallToAction />
-      </article>
-    </>
-  )
+  return <LandingPage />
 }
