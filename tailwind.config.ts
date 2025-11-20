@@ -71,7 +71,7 @@ export default {
         'action-sm': ['14px', { lineHeight: 'normal', fontWeight: '500' }],
       },
       gridTemplateRows: {
-        'app-layout': 'minmax(2rem, 4rem) 1fr minmax(8rem, 10rem)',
+        'app-layout': 'minmax(2rem, 4rem) 1fr auto',
       },
     },
   },

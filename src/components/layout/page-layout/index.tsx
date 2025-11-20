@@ -32,7 +32,7 @@ export const PageLayout = ({ children }: PageLayoutProps) => {
     >
       <Header />
 
-      <main className="row-start-2 mb-12 flex flex-1 flex-col">{children}</main>
+      <main className="row-start-2 flex flex-1 flex-col">{children}</main>
 
       <Footer />
     </div>
