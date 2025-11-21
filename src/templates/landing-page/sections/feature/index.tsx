@@ -6,7 +6,7 @@ import { Button } from '@/components'
 
 export const Feature = () => {
   return (
-    <section className="container grid gap-6 p-8 pb-16 pt-10 md:grid-cols-2 md:pb-24 md:pt-10">
+    <section className="container grid gap-6 px-4 pb-16 pt-10 md:grid-cols-2 md:px-8 md:pb-24 md:pt-10">
       <div className="flex flex-col gap-4 rounded-lg bg-gray-500 p-6 md:p-12">
         <span className="w-fit rounded-sm bg-blue-400 px-2 py-1 text-body-tag uppercase text-blue-200">
           Simples

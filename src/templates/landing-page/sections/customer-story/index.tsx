@@ -21,7 +21,7 @@ const CUSTOMER_STORIES = [
 
 export const CustomerStory = () => {
   return (
-    <section className="container p-8 py-20 md:py-24">
+    <section className="container px-4 py-20 md:px-8 md:py-24">
       <div className="flex flex-col items-center gap-12">
         <h2 className="font-pt-sans-caption text-balance text-center text-3xl/8 font-bold text-gray-100">
           Quem utiliza, aprova!

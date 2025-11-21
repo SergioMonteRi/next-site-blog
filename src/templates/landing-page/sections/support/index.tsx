@@ -2,7 +2,7 @@ import { HeartHandshake, PaintbrushVertical, Store } from 'lucide-react'
 
 export const Support = () => {
   return (
-    <section className="relative w-full bg-gradient-to-r from-gray-500 to-gray-700 p-8 py-12 md:py-24">
+    <section className="relative w-full bg-gradient-to-r from-gray-500 to-gray-700 px-4 py-12 md:px-8 md:py-24">
       <div className="absolute inset-0 hidden bg-[url('/background-features.svg')] bg-cover bg-center bg-no-repeat opacity-90 md:block" />
 
       <div className="container relative flex flex-col items-center gap-12">

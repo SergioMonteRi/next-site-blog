@@ -22,7 +22,7 @@ export const BlogList = () => {
   const hasPosts = filteredPosts.length > 0
 
   return (
-    <div className="flex h-full flex-grow flex-col bg-gray-700 p-8 py-20 md:py-24">
+    <div className="flex h-full flex-grow flex-col bg-gray-700 px-4 py-20 md:px-8 md:py-24">
       <div className="container flex flex-1 flex-col gap-6 md:gap-14">
         <header>
           <div className="flex flex-col items-start justify-between space-y-6 md:flex-row md:items-end">

@@ -40,6 +40,9 @@ export default {
           800: '#0B0C0F',
         },
       },
+      screens: {
+        '2lg': '1200px',
+      },
       borderRadius: {
         lg: '0.5rem',
         md: 'calc(0.5rem - 2px)',
