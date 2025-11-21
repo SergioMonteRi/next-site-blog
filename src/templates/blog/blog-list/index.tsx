@@ -13,26 +13,37 @@ export const BlogList = () => {
 
   return (
     <div className="flex h-full flex-grow flex-col bg-gray-700 p-8 py-20 md:py-24">
-      <header>
-        <div className="container flex flex-col items-start justify-between space-y-6 md:flex-row md:items-end">
-          <div className="flex flex-col gap-4 md:px-0">
-            <span className="w-fit rounded-md bg-cyan-300 px-8 py-2 text-center text-body-tag text-cyan-100 md:text-left">
-              Blog
-            </span>
+      <div className="container flex flex-col gap-6 md:gap-14">
+        <header>
+          <div className="flex flex-col items-start justify-between space-y-6 md:flex-row md:items-end">
+            <div className="flex flex-col gap-4 md:px-0">
+              <span className="w-fit rounded-md bg-cyan-300 px-8 py-2 text-center text-body-tag text-cyan-100 md:text-left">
+                Blog
+              </span>
 
-            <h1 className="max-w-2xl text-balance text-start text-heading-lg text-gray-100 md:text-left md:text-heading-xl">
-              {pageTitle}
-            </h1>
+              <h1 className="max-w-2xl text-balance text-start text-heading-lg text-gray-100 md:text-left md:text-heading-xl">
+                {pageTitle}
+              </h1>
+            </div>
+
+            <SearchInput />
           </div>
+        </header>
 
-          <SearchInput />
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <PostCard
+            title="Transformando seu negócio em uma loja virtual"
+            slug="transformando-seu-negocio-em-uma-loja-virtual"
+            description="Se você está buscando uma maneira simples e eficaz de vender seus produtos online, o Site.Set é a solução perfeita para você. Criar uma loja virtual de sucesso nunca foi tão fácil. Com nossa plataforma intuitiva, você pode criar um site profissional para sua loja em minutos, sem precisar de conhecimentos técnicos."
+            date="20/12/2025"
+            image="/assets/first-post.png"
+            author={{
+              name: 'Aspen Dokidis',
+              avatar: '/customer-avatar-01.png',
+            }}
+          />
         </div>
-      </header>
-
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
+      </div>
     </div>
   )
 }
