@@ -1,3 +1,5 @@
+import { allPosts } from 'contentlayer/generated'
+import { Terminal } from 'lucide-react'
 import { useRouter } from 'next/router'
 
 import { SearchInput } from '@/components'
@@ -11,9 +13,17 @@ export const BlogList = () => {
     ? `Resultados para "${query}"`
     : 'Dicas e estratégias para impulsionar seu negócio'
 
+  const filteredPosts = query
+    ? allPosts.filter((post) =>
+        post.title.toLocaleLowerCase().includes(query.toLocaleLowerCase()),
+      )
+    : allPosts
+
+  const hasPosts = filteredPosts.length > 0
+
   return (
     <div className="flex h-full flex-grow flex-col bg-gray-700 p-8 py-20 md:py-24">
-      <div className="container flex flex-col gap-6 md:gap-14">
+      <div className="container flex flex-1 flex-col gap-6 md:gap-14">
         <header>
           <div className="flex flex-col items-start justify-between space-y-6 md:flex-row md:items-end">
             <div className="flex flex-col gap-4 md:px-0">
@@ -30,52 +40,34 @@ export const BlogList = () => {
           </div>
         </header>
 
-        <PostGrid>
-          <PostCard
-            title="Transformando seu negócio em uma loja virtual"
-            slug="transformando-seu-negocio-em-uma-loja-virtual"
-            description="Se você está buscando uma maneira simples e eficaz de vender seus produtos online, o Site.Set é a solução perfeita para você. Criar uma loja virtual de sucesso nunca foi tão fácil. Com nossa plataforma intuitiva, você pode criar um site profissional para sua loja em minutos, sem precisar de conhecimentos técnicos."
-            date="20/12/2025"
-            image="/assets/first-post.png"
-            author={{
-              name: 'Aspen Dokidis',
-              avatar: '/customer-avatar-01.png',
-            }}
-          />
-          <PostCard
-            title="Transformando seu negócio em uma loja virtual"
-            slug="transformando-seu-negocio-em-uma-loja-virtual"
-            description="Se você está buscando uma maneira simples e eficaz de vender seus produtos online, o Site.Set é a solução perfeita para você. Criar uma loja virtual de sucesso nunca foi tão fácil. Com nossa plataforma intuitiva, você pode criar um site profissional para sua loja em minutos, sem precisar de conhecimentos técnicos."
-            date="20/12/2025"
-            image="/assets/first-post.png"
-            author={{
-              name: 'Aspen Dokidis',
-              avatar: '/customer-avatar-01.png',
-            }}
-          />
-          <PostCard
-            title="Transformando seu negócio em uma loja virtual"
-            slug="transformando-seu-negocio-em-uma-loja-virtual"
-            description="Se você está buscando uma maneira simples e eficaz de vender seus produtos online, o Site.Set é a solução perfeita para você. Criar uma loja virtual de sucesso nunca foi tão fácil. Com nossa plataforma intuitiva, você pode criar um site profissional para sua loja em minutos, sem precisar de conhecimentos técnicos."
-            date="20/12/2025"
-            image="/assets/first-post.png"
-            author={{
-              name: 'Aspen Dokidis',
-              avatar: '/customer-avatar-01.png',
-            }}
-          />
-          <PostCard
-            title="Transformando seu negócio em uma loja virtual"
-            slug="transformando-seu-negocio-em-uma-loja-virtual"
-            description="Se você está buscando uma maneira simples e eficaz de vender seus produtos online, o Site.Set é a solução perfeita para você. Criar uma loja virtual de sucesso nunca foi tão fácil. Com nossa plataforma intuitiva, você pode criar um site profissional para sua loja em minutos, sem precisar de conhecimentos técnicos."
-            date="20/12/2025"
-            image="/assets/first-post.png"
-            author={{
-              name: 'Aspen Dokidis',
-              avatar: '/customer-avatar-01.png',
-            }}
-          />
-        </PostGrid>
+        {hasPosts && (
+          <PostGrid>
+            {filteredPosts.map((post) => (
+              <PostCard
+                key={post._id}
+                title={post.title}
+                slug={post.slug}
+                description={post.description}
+                date={post.date}
+                image={post.image}
+                author={{
+                  name: post.author.name,
+                  avatar: post.author?.avatar,
+                }}
+              />
+            ))}
+          </PostGrid>
+        )}
+
+        {!hasPosts && (
+          <div className="flex flex-1 items-center justify-center rounded-md bg-gray-600">
+            <Terminal className="h-6 w-6 text-gray-200" />
+
+            <p className="ml-4 border-l border-gray-300/50 pl-4 text-sm/10 text-gray-200">
+              Nenhum post encontrado
+            </p>
+          </div>
+        )}
       </div>
     </div>
   )

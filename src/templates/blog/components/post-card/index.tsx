@@ -18,12 +18,18 @@ interface PostCardProps {
 export const PostCard = (props: PostCardProps) => {
   const { title, slug, description, date, image, author } = props
 
+  const formattedDate = new Date(date).toLocaleDateString('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  })
+
   return (
     <Link href={`/blog/${slug}`} className="w-full max-w-2xl">
       <div className="space-y-2 rounded-xl border border-gray-400 bg-gray-600 p-2 transition-all duration-300 hover:border-blue-300">
         <div className="relative">
           <div className="absolute right-0 top-0 rounded-bl-md bg-gray-600 px-3 py-1">
-            <span className="text-body-xs text-gray-300">{date}</span>
+            <span className="text-body-xs text-gray-300">{formattedDate}</span>
           </div>
 
           <Image
