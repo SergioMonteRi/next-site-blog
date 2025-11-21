@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 
 import { SearchInput } from '@/components'
 
-import { PostCard } from '../components'
+import { PostCard, PostGrid } from '../components'
 
 export const BlogList = () => {
   const router = useRouter()
@@ -30,7 +30,7 @@ export const BlogList = () => {
           </div>
         </header>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <PostGrid>
           <PostCard
             title="Transformando seu negócio em uma loja virtual"
             slug="transformando-seu-negocio-em-uma-loja-virtual"
@@ -42,7 +42,40 @@ export const BlogList = () => {
               avatar: '/customer-avatar-01.png',
             }}
           />
-        </div>
+          <PostCard
+            title="Transformando seu negócio em uma loja virtual"
+            slug="transformando-seu-negocio-em-uma-loja-virtual"
+            description="Se você está buscando uma maneira simples e eficaz de vender seus produtos online, o Site.Set é a solução perfeita para você. Criar uma loja virtual de sucesso nunca foi tão fácil. Com nossa plataforma intuitiva, você pode criar um site profissional para sua loja em minutos, sem precisar de conhecimentos técnicos."
+            date="20/12/2025"
+            image="/assets/first-post.png"
+            author={{
+              name: 'Aspen Dokidis',
+              avatar: '/customer-avatar-01.png',
+            }}
+          />
+          <PostCard
+            title="Transformando seu negócio em uma loja virtual"
+            slug="transformando-seu-negocio-em-uma-loja-virtual"
+            description="Se você está buscando uma maneira simples e eficaz de vender seus produtos online, o Site.Set é a solução perfeita para você. Criar uma loja virtual de sucesso nunca foi tão fácil. Com nossa plataforma intuitiva, você pode criar um site profissional para sua loja em minutos, sem precisar de conhecimentos técnicos."
+            date="20/12/2025"
+            image="/assets/first-post.png"
+            author={{
+              name: 'Aspen Dokidis',
+              avatar: '/customer-avatar-01.png',
+            }}
+          />
+          <PostCard
+            title="Transformando seu negócio em uma loja virtual"
+            slug="transformando-seu-negocio-em-uma-loja-virtual"
+            description="Se você está buscando uma maneira simples e eficaz de vender seus produtos online, o Site.Set é a solução perfeita para você. Criar uma loja virtual de sucesso nunca foi tão fácil. Com nossa plataforma intuitiva, você pode criar um site profissional para sua loja em minutos, sem precisar de conhecimentos técnicos."
+            date="20/12/2025"
+            image="/assets/first-post.png"
+            author={{
+              name: 'Aspen Dokidis',
+              avatar: '/customer-avatar-01.png',
+            }}
+          />
+        </PostGrid>
       </div>
     </div>
   )

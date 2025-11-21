@@ -39,7 +39,9 @@ export const PostCard = (props: PostCardProps) => {
           <div className="space-y-2">
             <h3 className="text-heading-sm text-gray-100">{title}</h3>
 
-            <p className="text-body-sm text-gray-300">{description}</p>
+            <p className="line-clamp-2 text-body-sm text-gray-300">
+              {description}
+            </p>
           </div>
 
           <div className="flex items-center gap-2 border-t border-gray-400 pt-3">
