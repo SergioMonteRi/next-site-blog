@@ -2,6 +2,8 @@ import { useRouter } from 'next/router'
 
 import { SearchInput } from '@/components'
 
+import { PostCard } from '../components'
+
 export const BlogList = () => {
   const router = useRouter()
   const query = router.query.q as string
@@ -26,6 +28,11 @@ export const BlogList = () => {
           <SearchInput />
         </div>
       </header>
+
+      <PostCard />
+      <PostCard />
+      <PostCard />
+      <PostCard />
     </div>
   )
 }
