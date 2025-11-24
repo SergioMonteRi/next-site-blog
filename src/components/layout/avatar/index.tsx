@@ -3,23 +3,15 @@ import { ComponentProps } from 'react'
 
 import { cn } from '@/lib/utils'
 
-interface AvatarContainerProps {
-  children: React.ReactNode
-}
+type AvatarContainerProps = ComponentProps<'div'>
 
-interface AvatarContentProps {
-  children: React.ReactNode
-}
+type AvatarContentProps = ComponentProps<'div'>
 
-interface AvatarDescriptionProps {
-  children: React.ReactNode
-}
+type AvatarDescriptionProps = ComponentProps<'span'>
 
 type AvatarImageProps = ComponentProps<typeof Image>
 
-type AvatarTitleProps = ComponentProps<'span'> & {
-  children: React.ReactNode
-}
+type AvatarTitleProps = ComponentProps<'span'>
 
 function AvatarRoot({ children }: AvatarContainerProps) {
   return <div className="flex items-center gap-3">{children}</div>
