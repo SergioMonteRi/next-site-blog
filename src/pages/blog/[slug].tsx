@@ -4,12 +4,14 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import {
+  Avatar,
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbSeparator,
 } from '@/components'
+import { formatDate } from '@/utils'
 
 export default function BlogPost() {
   const router = useRouter()
@@ -17,7 +19,7 @@ export default function BlogPost() {
 
   const post = allPosts.find((post) => post.slug === slug)
 
-  console.log(post)
+  const formattedDate = formatDate(post?.date)
 
   return (
     <main className="container h-full space-y-5 px-4 pb-20 pt-5 md:space-y-8 md:px-8 md:pb-32 md:pt-12">
@@ -48,12 +50,34 @@ export default function BlogPost() {
         <article className="overflow-hidden rounded-lg border border-gray-400 bg-gray-600">
           <figure className="relative aspect-[16/10] max-h-32 w-full overflow-hidden rounded-lg md:max-h-64">
             <Image
-              src={post?.image}
-              alt={post?.title}
+              src={post?.image ?? ''}
+              alt={post?.title ?? ''}
               fill
               className="object-cover"
             />
           </figure>
+
+          <header className="md:-6 p-4 pb-0 lg:p-12">
+            <h1 className="mb-6 text-balance text-heading-lg text-gray-100 md:text-heading-xl lg:text-heading-xl">
+              {post?.title}
+            </h1>
+
+            <Avatar.Root>
+              <Avatar.Image
+                src={post?.author.avatar ?? ''}
+                alt={post?.author.name ?? ''}
+              />
+              <Avatar.Content>
+                <Avatar.Title className="text-sm">
+                  {post?.author.name}
+                </Avatar.Title>
+                <Avatar.Description>
+                  Publicado em{' '}
+                  <time dateTime={formattedDate}>{formattedDate}</time>
+                </Avatar.Description>
+              </Avatar.Content>
+            </Avatar.Root>
+          </header>
         </article>
       </div>
     </main>

@@ -1,4 +1,5 @@
 export * from './active-link'
+export * from './avatar'
 export * from './footer'
 export * from './header'
 export * from './logo'
