@@ -1,7 +1,22 @@
 import Image from 'next/image'
 import { ComponentProps } from 'react'
+import { tv, VariantProps } from 'tailwind-variants'
 
 import { cn } from '@/lib/utils'
+
+const avatarImageVariants = tv({
+  base: 'relative overflow-hidden rounded-full border border-blue-300',
+
+  variants: {
+    size: {
+      small: 'h-5 w-5',
+      medium: 'h-9 w-9',
+    },
+  },
+  defaultVariants: {
+    size: 'small',
+  },
+})
 
 type AvatarContainerProps = ComponentProps<'div'>
 
@@ -9,7 +24,8 @@ type AvatarContentProps = ComponentProps<'div'>
 
 type AvatarDescriptionProps = ComponentProps<'span'>
 
-type AvatarImageProps = ComponentProps<typeof Image>
+type AvatarImageProps = ComponentProps<typeof Image> &
+  VariantProps<typeof avatarImageVariants>
 
 type AvatarTitleProps = ComponentProps<'span'>
 
@@ -33,14 +49,12 @@ function AvatarDescription({ children }: AvatarDescriptionProps) {
   return <span className="text-body-xs text-gray-300">{children}</span>
 }
 
-function AvatarImage({
-  src,
-  alt,
-  width = 40,
-  height = 40,
-  ...rest
-}: AvatarImageProps) {
-  return <Image {...rest} src={src} alt={alt} width={width} height={height} />
+function AvatarImage({ src, alt, size = 'small', ...rest }: AvatarImageProps) {
+  return (
+    <div className={avatarImageVariants({ size })}>
+      <Image {...rest} src={src} alt={alt} fill className="object-cover" />
+    </div>
+  )
 }
 
 export const Avatar = {

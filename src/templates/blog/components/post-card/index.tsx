@@ -51,12 +51,7 @@ export const PostCard = (props: PostCardProps) => {
 
           <div className="flex items-center gap-2 border-t border-gray-400 pt-3">
             <Avatar.Root>
-              <Avatar.Image
-                src={author?.avatar}
-                alt="Post"
-                width={20}
-                height={20}
-              />
+              <Avatar.Image src={author?.avatar} alt="Post" size="small" />
               <Avatar.Content>
                 <Avatar.Title className="text-gray-300">
                   {author?.name}
