@@ -11,6 +11,8 @@ const buttonVariants = cva(
       variant: {
         primary: 'bg-blue-200 text-white hover:bg-blue-300 rounded-full w-fit',
         secondary: 'bg-gray-100 text-gray-800 hover:bg-blue-100 rounded-full',
+        outline:
+          'bg-transparent border border-gray-400 rounded-md hover:bg-gray-400 hover:text-gray-800 w-full justify-start gap-2',
       },
       size: {
         default: 'h-10 px-4 py-2',

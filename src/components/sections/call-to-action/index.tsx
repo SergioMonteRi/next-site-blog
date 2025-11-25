@@ -13,7 +13,7 @@ export const CallToAction = () => {
       </div>
 
       <div className="container relative flex flex-col items-center gap-8 md:gap-10">
-        <h2 className="font-pt-sans-caption text-balance text-center text-2xl font-bold text-gray-100 md:max-w-[450px] md:text-3xl/8">
+        <h2 className="text-balance text-center font-pt-sans-caption text-2xl font-bold text-gray-100 md:max-w-[450px] md:text-3xl/8">
           Crie uma loja online e inicie suas vendas ainda hoje
         </h2>
 

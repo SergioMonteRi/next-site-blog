@@ -1,4 +1,6 @@
-import { CallToAction, CustomerStory, Feature, Hero, Support } from './sections'
+import { CallToAction } from '@/components'
+
+import { CustomerStory, Feature, Hero, Support } from './sections'
 
 export const LandingPage = () => {
   return (
