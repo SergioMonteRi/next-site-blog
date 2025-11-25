@@ -10,6 +10,7 @@ import {
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbSeparator,
+  Markdown,
 } from '@/components'
 import { formatDate } from '@/utils'
 
@@ -57,27 +58,33 @@ export default function BlogPost() {
             />
           </figure>
 
-          <header className="md:-6 p-4 pb-0 lg:p-12">
-            <h1 className="mb-6 text-balance text-heading-lg text-gray-100 md:text-heading-xl lg:text-heading-xl">
-              {post?.title}
-            </h1>
+          <div className="flex flex-col gap-8 p-6 pt-8 md:gap-12 md:p-16 md:pt-12">
+            <header className="">
+              <h1 className="mb-6 text-balance text-heading-lg text-gray-100 md:text-heading-xl lg:text-heading-xl">
+                {post?.title}
+              </h1>
 
-            <Avatar.Root>
-              <Avatar.Image
-                src={post?.author.avatar ?? ''}
-                alt={post?.author.name ?? ''}
-              />
-              <Avatar.Content>
-                <Avatar.Title className="text-sm">
-                  {post?.author.name}
-                </Avatar.Title>
-                <Avatar.Description>
-                  Publicado em{' '}
-                  <time dateTime={formattedDate}>{formattedDate}</time>
-                </Avatar.Description>
-              </Avatar.Content>
-            </Avatar.Root>
-          </header>
+              <Avatar.Root>
+                <Avatar.Image
+                  src={post?.author.avatar ?? ''}
+                  alt={post?.author.name ?? ''}
+                />
+                <Avatar.Content>
+                  <Avatar.Title className="text-sm">
+                    {post?.author.name}
+                  </Avatar.Title>
+                  <Avatar.Description>
+                    Publicado em{' '}
+                    <time dateTime={formattedDate}>{formattedDate}</time>
+                  </Avatar.Description>
+                </Avatar.Content>
+              </Avatar.Root>
+            </header>
+
+            <div className="prose prose-invert max-w-none">
+              <Markdown content={post?.body.raw ?? ''} />
+            </div>
+          </div>
         </article>
       </div>
     </main>
