@@ -1,4 +1,4 @@
-import { allPosts } from 'contentlayer/generated'
+import { Post } from 'contentlayer/generated'
 import { Terminal } from 'lucide-react'
 import { useRouter } from 'next/router'
 
@@ -6,7 +6,11 @@ import { CallToAction, SearchInput } from '@/components'
 
 import { PostCard, PostGrid } from '../../components'
 
-export const BlogList = () => {
+interface BlogListProps {
+  posts: Post[]
+}
+
+export const BlogList = ({ posts }: BlogListProps) => {
   const router = useRouter()
   const query = router.query.q as string
   const pageTitle = query
@@ -14,10 +18,10 @@ export const BlogList = () => {
     : 'Dicas e estratégias para impulsionar seu negócio'
 
   const filteredPosts = query
-    ? allPosts.filter((post) =>
+    ? posts.filter((post) =>
         post.title.toLocaleLowerCase().includes(query.toLocaleLowerCase()),
       )
-    : allPosts
+    : posts
 
   const hasPosts = filteredPosts.length > 0
 
