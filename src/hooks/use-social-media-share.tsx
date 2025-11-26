@@ -1,4 +1,4 @@
-import { Check, Copy } from 'lucide-react'
+import { Check, Link } from 'lucide-react'
 import { useCallback, useMemo } from 'react'
 
 import { SOCIAL_MEDIA_SHARE } from '@/constants'
@@ -69,7 +69,7 @@ export const useSocialMediaShare = ({
             {isCopied ? (
               <Check strokeWidth={1.5} className="text-gray-100" />
             ) : (
-              <Copy strokeWidth={1.5} className="text-gray-100" />
+              <Link strokeWidth={1.5} className="text-gray-100" />
             )}
           </div>
         ),

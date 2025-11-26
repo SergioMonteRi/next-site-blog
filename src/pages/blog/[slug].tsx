@@ -10,12 +10,13 @@ import {
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbSeparator,
-  Button,
   CallToAction,
   Markdown,
 } from '@/components'
-import { useSocialMediaShare } from '@/hooks'
 import { formatDate } from '@/utils'
+
+import { SocialMediaShare } from './components'
+
 export default function BlogPost() {
   const router = useRouter()
   const slug = router.query.slug as string
@@ -26,15 +27,10 @@ export default function BlogPost() {
 
   const postUrl = `https://site.set/blog/${slug}`
 
-  const { shareButtons } = useSocialMediaShare({
-    url: postUrl,
-    title: post?.title,
-  })
-
   return (
     <>
       <main className="container h-full space-y-5 px-4 pb-20 pt-5 md:space-y-8 md:px-8 md:pb-32 md:pt-12">
-        <div>
+        <div className="flex items-center justify-between">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -55,6 +51,10 @@ export default function BlogPost() {
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
+
+          <div className="lg:hidden">
+            <SocialMediaShare url={postUrl} title={post?.title} />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_250px]">
@@ -98,24 +98,9 @@ export default function BlogPost() {
             </div>
           </article>
 
-          <aside className="space-y-5">
-            <h2 className="text-heading-xs text-gray-100">Compartilhar</h2>
-
-            <div className="grid grid-cols-2 gap-2 lg:grid-cols-1">
-              {shareButtons.map((button) => (
-                <Button
-                  key={button.title}
-                  variant="outline"
-                  onClick={() => button.handleShare()}
-                >
-                  {button.icon}
-                  <span className="text-action-sm text-gray-200">
-                    {button.title}
-                  </span>
-                </Button>
-              ))}
-            </div>
-          </aside>
+          <div className="hidden lg:block">
+            <SocialMediaShare url={postUrl} title={post?.title} />
+          </div>
         </div>
       </main>
 
