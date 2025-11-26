@@ -1,4 +1,4 @@
-import { AtSign, Facebook, Linkedin, Slack, Twitter } from 'lucide-react'
+import { Facebook, Linkedin, Slack } from 'lucide-react'
 
 interface ShareConfig {
   url: string
@@ -29,22 +29,6 @@ const SOCIAL_MEDIA_SHARE = {
       `https://slack.com/share?url=${encodeURIComponent(
         config.url,
       )}&text=${encodeURIComponent(config.title || '')}`,
-  },
-  twitter: {
-    title: 'Twitter',
-    icon: <Twitter className="h-4 w-4 text-gray-100" strokeWidth={1.5} />,
-    shareUrl: (config: ShareConfig) =>
-      `https://x.com/intent/tweet?url=${encodeURIComponent(
-        config.url,
-      )}&text=${encodeURIComponent(config.title || '')}`,
-  },
-  threads: {
-    title: 'Threads',
-    icon: <AtSign className="h-4 w-4 text-gray-100" strokeWidth={1.5} />,
-    shareUrl: (config: ShareConfig) =>
-      `https://threads.net/intent/post?text=${encodeURIComponent(
-        `${config.title || ''} ${config.url}`,
-      )}`,
   },
 }
 
