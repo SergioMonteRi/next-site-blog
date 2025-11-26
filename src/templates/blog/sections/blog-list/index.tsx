@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 import { CallToAction, SearchInput } from '@/components'
 
-import { PostCard, PostGrid } from '../components'
+import { PostCard, PostGrid } from '../../components'
 
 export const BlogList = () => {
   const router = useRouter()

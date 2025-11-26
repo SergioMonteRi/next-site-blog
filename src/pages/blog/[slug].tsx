@@ -13,9 +13,8 @@ import {
   CallToAction,
   Markdown,
 } from '@/components'
+import { SocialMediaShare } from '@/templates'
 import { formatDate } from '@/utils'
-
-import { SocialMediaShare } from './components'
 
 export default function BlogPost() {
   const router = useRouter()

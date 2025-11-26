@@ -9,7 +9,7 @@ export const Hero = () => {
     <section className="container relative flex items-center justify-center px-4 py-8 md:px-8">
       <div className="grid min-h-[20rem] grid-cols-1 items-center gap-8 md:h-[36rem] md:grid-cols-2">
         <div className="flex flex-col items-center justify-center gap-6 md:items-start">
-          <h1 className="font-pt-sans-caption text-center text-heading-hg text-gray-100 md:text-left">
+          <h1 className="text-center font-pt-sans-caption text-heading-hg text-gray-100 md:text-left">
             Venda seus produtos como afiliado em um único lugar
           </h1>
 

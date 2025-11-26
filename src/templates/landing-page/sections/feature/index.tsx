@@ -30,7 +30,7 @@ export const Feature = () => {
           <span className="w-fit rounded-sm bg-blue-400 px-2 py-1 text-body-tag uppercase text-blue-200">
             personalizável
           </span>
-          <h2 className="font-pt-sans-caption mt-4 text-heading-lg text-gray-100">
+          <h2 className="mt-4 font-pt-sans-caption text-heading-lg text-gray-100">
             Tenha uma loja online personalizada com a cara da sua marca
           </h2>
 

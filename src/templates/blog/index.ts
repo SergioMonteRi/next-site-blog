@@ -1,2 +1,2 @@
-export * from './blog-list'
 export * from './components'
+export * from './sections'

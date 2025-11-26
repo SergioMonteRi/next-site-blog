@@ -6,7 +6,7 @@ export const Support = () => {
       <div className="absolute inset-0 hidden bg-[url('/background-features.svg')] bg-cover bg-center bg-no-repeat opacity-90 md:block" />
 
       <div className="container relative flex flex-col items-center gap-12">
-        <h2 className="font-pt-sans-caption text-balance text-center text-3xl/8 font-bold text-gray-100">
+        <h2 className="text-balance text-center font-pt-sans-caption text-3xl/8 font-bold text-gray-100">
           Sua loja de afiliados, simples, do jeito que deveria ser
         </h2>
 
