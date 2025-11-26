@@ -1,4 +1,5 @@
-import { allPosts } from 'contentlayer/generated'
+import { allPosts, Post } from 'contentlayer/generated'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -16,13 +17,15 @@ import {
 import { SocialMediaShare } from '@/templates'
 import { formatDate } from '@/utils'
 
-export default function BlogPost() {
+interface BlogPostProps {
+  post: Post
+}
+
+export default function BlogPost({ post }: BlogPostProps) {
   const router = useRouter()
   const slug = router.query.slug as string
 
-  const post = allPosts.find((post) => post.slug === slug)
-
-  const formattedDate = formatDate(post?.date)
+  const formattedDate = formatDate(post.date)
 
   const postUrl = `https://site.set/blog/${slug}`
 
@@ -60,8 +63,8 @@ export default function BlogPost() {
           <article className="overflow-hidden rounded-lg border border-gray-400 bg-gray-600">
             <figure className="relative aspect-[16/10] max-h-32 w-full overflow-hidden rounded-tl-lg md:max-h-64">
               <Image
-                src={post?.image ?? ''}
-                alt={post?.title ?? ''}
+                src={post.image}
+                alt={post.title}
                 fill
                 className="object-cover"
               />
@@ -70,18 +73,18 @@ export default function BlogPost() {
             <div className="flex flex-col gap-8 p-6 pt-8 md:gap-12 md:p-16 md:pt-12">
               <header className="">
                 <h1 className="mb-6 text-balance text-heading-md text-gray-100 md:text-heading-xl lg:text-heading-xl">
-                  {post?.title}
+                  {post.title}
                 </h1>
 
                 <Avatar.Root>
                   <Avatar.Image
-                    src={post?.author.avatar ?? ''}
-                    alt={post?.author.name ?? ''}
+                    src={post.author.avatar}
+                    alt={post.author.name}
                     size="medium"
                   />
                   <Avatar.Content>
                     <Avatar.Title className="text-sm">
-                      {post?.author.name}
+                      {post.author.name}
                     </Avatar.Title>
                     <Avatar.Description>
                       Publicado em{' '}
@@ -92,13 +95,13 @@ export default function BlogPost() {
               </header>
 
               <div className="prose prose-invert max-w-none">
-                <Markdown content={post?.body.raw ?? ''} />
+                <Markdown content={post.body.raw} />
               </div>
             </div>
           </article>
 
           <div className="hidden lg:block">
-            <SocialMediaShare url={postUrl} title={post?.title} />
+            <SocialMediaShare url={postUrl} title={post.title} />
           </div>
         </div>
       </main>
@@ -107,3 +110,36 @@ export default function BlogPost() {
     </>
   )
 }
+
+export const getStaticPaths = (async () => {
+  const posts = allPosts.sort((a, b) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime()
+  })
+
+  const recentPosts = posts.slice(0, 5)
+
+  const paths = recentPosts.map((post) => ({
+    params: { slug: post.slug },
+  }))
+
+  return {
+    paths,
+    fallback: 'blocking',
+  }
+}) satisfies GetStaticPaths
+
+export const getStaticProps = (async (context) => {
+  const post = allPosts.find((post) => post.slug === context.params?.slug)
+
+  if (!post) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      post,
+    },
+  }
+}) satisfies GetStaticProps
