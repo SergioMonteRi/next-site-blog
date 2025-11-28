@@ -1,24 +1,22 @@
+'use client'
+
 import { CircleX, SearchIcon } from 'lucide-react'
-import { useRouter } from 'next/router'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useCallback } from 'react'
 
 import { cn } from '@/lib/utils'
 
 export const SearchInput = () => {
   const router = useRouter()
-  const query = router.query.q as string
+  const searchParams = useSearchParams()
+  const query = searchParams?.get('q') as string
 
   const handleSearch = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
 
       if (query.trim()) {
-        router.push({
-          pathname: '/blog',
-          query: {
-            q: query,
-          },
-        })
+        router.push(`/blog?q=${query}`)
       }
     },
     [router, query],
@@ -29,35 +27,17 @@ export const SearchInput = () => {
       const newQuery = event?.target.value
 
       if (!newQuery) {
-        router.push({
-          pathname: '/blog',
-          query: {},
-        })
+        router.push('/blog')
         return
       }
 
-      router.push(
-        {
-          pathname: '/blog',
-          query: {
-            q: newQuery,
-          },
-        },
-        undefined,
-        {
-          shallow: true,
-          scroll: false,
-        },
-      )
+      router.push(`/blog?q=${newQuery}`)
     },
     [router],
   )
 
   const handleClearQuery = useCallback(() => {
-    router.push({
-      pathname: '/blog',
-      query: {},
-    })
+    router.push('/blog')
   }, [router])
 
   return (

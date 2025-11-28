@@ -1,8 +1,10 @@
-import { Post } from 'contentlayer/generated'
-import { Terminal } from 'lucide-react'
-import { useRouter } from 'next/router'
+'use client'
 
-import { CallToAction, SearchInput } from '@/components'
+import { Post } from 'contentlayer/generated'
+import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
+
+import { CallToAction, NotFound, SearchInput } from '@/components'
 
 import { PostCard, PostGrid } from '../../components'
 
@@ -11,8 +13,9 @@ interface BlogListProps {
 }
 
 export const BlogList = ({ posts }: BlogListProps) => {
-  const router = useRouter()
-  const query = router.query.q as string
+  const searchParams = useSearchParams()
+  const query = searchParams?.get('q') as string
+
   const pageTitle = query
     ? `Resultados para "${query}"`
     : 'Dicas e estratégias para impulsionar seu negócio'
@@ -45,34 +48,28 @@ export const BlogList = ({ posts }: BlogListProps) => {
             </div>
           </header>
 
-          {hasPosts && (
-            <PostGrid>
-              {filteredPosts.map((post) => (
-                <PostCard
-                  key={post._id}
-                  title={post.title}
-                  slug={post.slug}
-                  description={post.description}
-                  date={post.date}
-                  image={post.image}
-                  author={{
-                    name: post.author.name,
-                    avatar: post.author?.avatar,
-                  }}
-                />
-              ))}
-            </PostGrid>
-          )}
+          <Suspense fallback={<div>Carregando...</div>}>
+            {hasPosts && (
+              <PostGrid>
+                {filteredPosts.map((post) => (
+                  <PostCard
+                    key={post._id}
+                    title={post.title}
+                    slug={post.slug}
+                    description={post.description}
+                    date={post.date}
+                    image={post.image}
+                    author={{
+                      name: post.author.name,
+                      avatar: post.author?.avatar,
+                    }}
+                  />
+                ))}
+              </PostGrid>
+            )}
+          </Suspense>
 
-          {!hasPosts && (
-            <div className="flex flex-1 items-center justify-center rounded-md bg-gray-600 py-10">
-              <Terminal className="h-6 w-6 text-gray-200" />
-
-              <p className="ml-4 border-l border-gray-300/50 pl-4 text-sm/10 text-gray-200">
-                Nenhum post encontrado
-              </p>
-            </div>
-          )}
+          {!hasPosts && <NotFound message="Nenhum post encontrado" />}
         </div>
       </div>
 

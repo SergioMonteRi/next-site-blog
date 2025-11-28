@@ -1,8 +1,7 @@
-import { allPosts, Post } from 'contentlayer/generated'
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { allPosts } from 'contentlayer/generated'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import { notFound } from 'next/navigation'
 
 import {
   Avatar,
@@ -17,13 +16,20 @@ import {
 import { SocialMediaShare } from '@/templates'
 import { formatDate } from '@/utils'
 
-interface BlogPostProps {
-  post: Post
+interface BlogPostPageProps {
+  params: Promise<{
+    slug: string
+  }>
 }
 
-export default function BlogPost({ post }: BlogPostProps) {
-  const router = useRouter()
-  const slug = router.query.slug as string
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { slug } = await params
+
+  const post = allPosts.find((post) => post.slug === slug)
+
+  if (!post) {
+    return notFound()
+  }
 
   const formattedDate = formatDate(post.date)
 
@@ -110,36 +116,3 @@ export default function BlogPost({ post }: BlogPostProps) {
     </>
   )
 }
-
-export const getStaticPaths = (async () => {
-  const posts = allPosts.sort((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime()
-  })
-
-  const recentPosts = posts.slice(0, 5)
-
-  const paths = recentPosts.map((post) => ({
-    params: { slug: post.slug },
-  }))
-
-  return {
-    paths,
-    fallback: 'blocking',
-  }
-}) satisfies GetStaticPaths
-
-export const getStaticProps = (async (context) => {
-  const post = allPosts.find((post) => post.slug === context.params?.slug)
-
-  if (!post) {
-    return {
-      notFound: true,
-    }
-  }
-
-  return {
-    props: {
-      post,
-    },
-  }
-}) satisfies GetStaticProps

@@ -52,7 +52,14 @@ function AvatarDescription({ children }: AvatarDescriptionProps) {
 function AvatarImage({ src, alt, size = 'small', ...rest }: AvatarImageProps) {
   return (
     <div className={avatarImageVariants({ size })}>
-      <Image {...rest} src={src} alt={alt} fill className="object-cover" />
+      <Image
+        {...rest}
+        src={src}
+        alt={alt}
+        sizes="100%"
+        className="object-cover"
+        fill
+      />
     </div>
   )
 }

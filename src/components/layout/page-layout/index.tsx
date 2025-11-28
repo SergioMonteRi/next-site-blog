@@ -1,4 +1,5 @@
 import { Inter, PT_Sans_Caption } from 'next/font/google'
+import { Suspense } from 'react'
 
 import { cn } from '@/lib/utils'
 
@@ -25,7 +26,7 @@ export const PageLayout = ({ children }: PageLayoutProps) => {
   return (
     <div
       className={cn(
-        'grid min-h-screen grid-flow-row grid-rows-app-layout bg-zinc-900 font-inter font-normal',
+        'grid min-h-screen grid-flow-row grid-rows-app-layout font-inter font-normal',
         ptSansCaption.className,
         inter.className,
       )}
