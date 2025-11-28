@@ -1,3 +1,5 @@
+'use client'
+
 import { Button } from '@/components'
 import { useSocialMediaShare } from '@/hooks'
 

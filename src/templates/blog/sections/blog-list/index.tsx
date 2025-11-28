@@ -2,7 +2,6 @@
 
 import { Post } from 'contentlayer/generated'
 import { useSearchParams } from 'next/navigation'
-import { Suspense } from 'react'
 
 import { CallToAction, NotFound, SearchInput } from '@/components'
 
@@ -48,26 +47,24 @@ export const BlogList = ({ posts }: BlogListProps) => {
             </div>
           </header>
 
-          <Suspense fallback={<div>Carregando...</div>}>
-            {hasPosts && (
-              <PostGrid>
-                {filteredPosts.map((post) => (
-                  <PostCard
-                    key={post._id}
-                    title={post.title}
-                    slug={post.slug}
-                    description={post.description}
-                    date={post.date}
-                    image={post.image}
-                    author={{
-                      name: post.author.name,
-                      avatar: post.author?.avatar,
-                    }}
-                  />
-                ))}
-              </PostGrid>
-            )}
-          </Suspense>
+          {hasPosts && (
+            <PostGrid>
+              {filteredPosts.map((post) => (
+                <PostCard
+                  key={post._id}
+                  title={post.title}
+                  slug={post.slug}
+                  description={post.description}
+                  date={post.date}
+                  image={post.image}
+                  author={{
+                    name: post.author.name,
+                    avatar: post.author?.avatar,
+                  }}
+                />
+              ))}
+            </PostGrid>
+          )}
 
           {!hasPosts && <NotFound message="Nenhum post encontrado" />}
         </div>
