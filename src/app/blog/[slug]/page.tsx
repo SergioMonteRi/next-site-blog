@@ -22,6 +22,14 @@ interface BlogPostPageProps {
   }>
 }
 
+export const revalidate = 60 * 60 * 24 // 24 hours
+
+export async function generateStaticParams() {
+  return allPosts.map((post) => ({
+    slug: post.slug,
+  }))
+}
+
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
 
