@@ -1,4 +1,5 @@
 import { allPosts } from 'contentlayer/generated'
+import { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -23,6 +24,41 @@ interface BlogPostPageProps {
 }
 
 export const revalidate = 86400 // 24 hours
+
+export async function generateMetadata({
+  params,
+}: BlogPostPageProps): Promise<Metadata> {
+  const { slug } = await params
+
+  const post = allPosts.find((post) => post.slug === slug)
+
+  if (!post) {
+    return notFound()
+  }
+
+  return {
+    title: `${post.title} | Site.set`,
+    description: post.description,
+    authors: [{ name: post.author.name }],
+    robots: 'index, follow',
+    openGraph: {
+      title: `${post.title} | Site.set`,
+      description: post.description,
+      url: `https://next-site-blog.vercel.app/blog/${slug}`,
+      siteName: 'Site.set',
+      locale: 'pt-BR',
+      type: 'website',
+      images: [
+        {
+          url: post.image,
+          width: 800,
+          height: 600,
+          alt: post.title,
+        },
+      ],
+    },
+  }
+}
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
