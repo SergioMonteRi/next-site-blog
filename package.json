@@ -6,7 +6,7 @@
     "dev": "next dev",
     "dev:turbo": "contentlayer dev & next dev",
     "dev:webpack": "next dev --webpack",
-    "build": "next build",
+    "build": "contentlayer build && next build",
     "start": "next start",
     "lint": "eslint",
     "lint:fix": "eslint . --fix",
