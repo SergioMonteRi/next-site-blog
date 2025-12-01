@@ -4,7 +4,7 @@ import { Metadata } from 'next'
 import { BlogList } from '@/templates'
 
 export const metadata: Metadata = {
-  title: 'Blog | Site.set',
+  title: 'Blog',
   description: 'Dicas e estratégias para impulsionar seu negócio',
   robots: 'index, follow',
   openGraph: {

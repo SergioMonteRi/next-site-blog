@@ -37,7 +37,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${post.title} | Site.set`,
+    title: `${post.title}`,
     description: post.description,
     authors: [{ name: post.author.name }],
     robots: 'index, follow',
