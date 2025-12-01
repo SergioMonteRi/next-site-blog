@@ -22,7 +22,7 @@ interface BlogPostPageProps {
   }>
 }
 
-export const revalidate = 60 * 60 * 24 // 24 hours
+export const revalidate = 86400 // 24 hours
 
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
