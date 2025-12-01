@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Site.set',
     description: 'Venda seus produtos como afiliado em um único lugar',
-    url: 'https://next-site-blog-jvo5c439i-sergiomonteris-projects.vercel.app/',
+    url: 'https://next-site-blog.vercel.app/og-image.png',
     siteName: 'Site.set',
     locale: 'pt-BR',
     type: 'website',
     images: [
       {
-        url: 'https://next-site-blog-jvo5c439i-sergiomonteris-projects.vercel.app/og-image.png',
+        url: 'https://next-site-blog.vercel.app/og-image.png',
         width: 800,
         height: 600,
         alt: 'Site.set',
